@@ -1,16 +1,14 @@
 {
-  "name": "ts-factory-cli",
+  "name": "ts-factory",
   "version": "1.0.0",
-  "description": "Simple CLI to create time series nock data",
+  "description": "Simple time series factory for time series mock data creation",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "dlorian",
   "license": "ISC",
   "dependencies": {
-    "commander": "^2.17.1",
-    "xmlbuilder": "^10.0.0"
+    "luxon": "^1.3.3",
+    "random-float": "^1.0.0",
+    "round-to": "^3.0.0"
   },
   "devDependencies": {
     "eslint": "^5.4.0"
