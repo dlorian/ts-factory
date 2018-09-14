@@ -1,0 +1,6 @@
+test/
+
+.eslintrc
+
+# Output of 'npm pack'
+*.tgz
