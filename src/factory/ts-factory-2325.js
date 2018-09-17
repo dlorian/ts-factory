@@ -42,6 +42,7 @@ const stream = (startDate, endDate, offset) => {
         read() { }
     });
 
+
     create(stream, startDate, endDate, offset);
 
     return stream;

@@ -6,7 +6,7 @@ DateTime.local().reconfigure({ locale: 'de' });
 const fromISO = (dateString) => {
     const date = DateTime.fromISO(dateString, { locale: 'de' });
     if (!date.isValid) {
-        throw new Error(`${date} is not a valid date`);
+        throw new Error(dateString + ' is not a valid date');
     }
 
     return date;

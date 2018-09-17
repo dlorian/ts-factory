@@ -3,7 +3,7 @@ const tsFactory = require('./factory');
 const formatTransformer = require('./format-transformer');
 
 const stream = (options) => {
-    log.info(`ts-factory stream for ${options}`);
+    log.info(`ts-factory stream for {}`, options);
 
     const start = options.start;
     const end = options.end;

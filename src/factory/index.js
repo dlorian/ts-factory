@@ -1,3 +1,4 @@
+const log = require('../logger');
 const dateUtils = require('./utils/date-util');
 const factory2325 = require('./ts-factory-2325');
 const factory2424 = require('./ts-factory-2424');
@@ -35,7 +36,9 @@ const stream = (start, end, options) => {
         throw new Error(`Granulartiy ${granulartiy} is not defined`);
     }
 
-    return factories.get(dstMode).stream(startDate, endDate, offset);
+    return factories.get(dstMode)
+        .stream(startDate, endDate, offset)
+        .on('error', (err) => log.error('error while ts-factory stream', err));
 };
 
 module.exports = { stream };
