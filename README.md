@@ -1,7 +1,5 @@
 # ts-factory
 
-# ts-factory
-
 *ts-factory* is just a simple factory used to create some kind of times series mock data.
 
 # Install
