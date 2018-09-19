@@ -20,6 +20,18 @@ const toDayStart = (date) => {
     return date.startOf('day');
 };
 
+const toDateTime = (date) => {
+    return date.toISO();
+};
+
+const toDate = (date) => {
+    return date.toISODate();
+};
+
+const toTime = (date) => {
+    return date.toISOTime();
+};
+
 const getLastSunday = (date) => {
     const sunday = 7;
 
@@ -46,4 +58,4 @@ const getDstDateTime = (year, month) => {
     }
 };
 
-module.exports = { fromISO, getDate, toDayStart, getDstDateTime };
+module.exports = { fromISO, toDateTime, toDate, toTime, getDate, toDayStart, getDstDateTime };

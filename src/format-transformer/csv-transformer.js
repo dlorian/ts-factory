@@ -1,11 +1,9 @@
 const { Transform } = require('stream');
-const { toDateTime } = require('../utils/date-util');
+const { toDate, toTime } = require('../utils/date-util');
 
-const _transform = (data, firstChunk) => {
-    return `${firstChunk ? '' : ','}{
-    "date": "${toDateTime(data.tsDate)}",
-    "value": ${data.tsValue}
-}`;
+const _transform = (data) => {
+    return `${toDate(data.tsDate)};${toTime(data.tsDate)};${data.tsValue}
+    `;
 };
 
 const stream = () => {
@@ -20,13 +18,8 @@ const stream = () => {
         },
 
         final: done => {
-            stream.push(']');
             done(null);
         }
-    });
-
-    stream.on('pipe', () => {
-        stream.push('[');
     });
 
     return stream;

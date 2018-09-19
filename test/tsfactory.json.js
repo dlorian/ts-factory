@@ -1,4 +1,4 @@
-const { stream } = require('../src/index');
+const { stream } = require('../src');
 
 const options = {
     start: '2018-08-01',
@@ -8,4 +8,4 @@ const options = {
 };
 
 // sut
-stream(options).on('data', (data) => console.log(data));
+stream(options).pipe(process.stdout);

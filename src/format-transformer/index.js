@@ -1,11 +1,13 @@
 const log = require('../logger.js');
 
+const csvFormatTransformer = require('./csv-transformer');
 const xmlFormatTransformer = require('./xml-transfromer');
 const jsonFormatTransformer = require('./json-transformer');
 
 const formatTransformer = {
     'json': jsonFormatTransformer,
-    'xml': xmlFormatTransformer
+    'xml': xmlFormatTransformer,
+    'csv': csvFormatTransformer,
 };
 
 module.exports = {

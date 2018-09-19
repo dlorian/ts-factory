@@ -1,5 +1,5 @@
-const dateUtil = require('./utils/date-util');
-const valueUtil = require('./utils/value-util');
+const dateUtil = require('../utils/date-util');
+const valueUtil = require('../utils/value-util');
 
 const { Readable } = require('stream');
 
@@ -27,7 +27,7 @@ const create = (stream, startDate, endDate, offset) => {
                 currentDate = currentDate.minus({ hours: 1 });
             }
         }
-        stream.push({ tsDate: currentDate.toISO(), tsValue: valueUtil.generateFloat() });
+        stream.push({ tsDate: currentDate, tsValue: valueUtil.generateFloat() });
 
         currentDate = currentDate.plus(offset);
 

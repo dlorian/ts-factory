@@ -1,5 +1,5 @@
 const log = require('../logger');
-const dateUtils = require('./utils/date-util');
+const dateUtils = require('../utils/date-util');
 const factory2325 = require('./ts-factory-2325');
 const factory2424 = require('./ts-factory-2424');
 

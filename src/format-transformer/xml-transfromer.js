@@ -1,8 +1,9 @@
 const { Transform } = require('stream');
+const { toDateTime } = require('../utils/date-util');
 
 const _transform = (data) => {
     return `
-    <TimeSeriesValue i="${data.tsDate}">${data.tsValue}</TimeSeriesValue>`;
+    <TimeSeriesValue i="${toDateTime(data.tsDate)}">${data.tsValue}</TimeSeriesValue>`;
 };
 
 const stream = () => {
