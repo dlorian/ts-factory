@@ -1,9 +1,8 @@
-const dateUtil = require('../utils/date-util');
-const valueUtil = require('../utils/value-util');
-
 const { Readable } = require('stream');
 
-const create = (stream, startDate, endDate, offset) => {
+const dateUtil = require('../utils/date-util');
+
+const create = (stream, startDate, endDate, offset, valueSupplier) => {
     let currentDate = startDate;
     let octoberShifted = false;
     let marchShifted = false;
@@ -27,7 +26,8 @@ const create = (stream, startDate, endDate, offset) => {
                 currentDate = currentDate.minus({ hours: 1 });
             }
         }
-        stream.push({ tsDate: currentDate, tsValue: valueUtil.generateFloat() });
+
+        stream.push({ tsDate: currentDate, tsValue: valueSupplier.get() });
 
         currentDate = currentDate.plus(offset);
 
@@ -36,14 +36,14 @@ const create = (stream, startDate, endDate, offset) => {
     stream.push(null);
 };
 
-const stream = (startDate, endDate, offset) => {
+const stream = (startDate, endDate, offset, valueSupplier) => {
     const stream = new Readable({
         objectMode: true,
         read() { }
     });
 
 
-    create(stream, startDate, endDate, offset);
+    create(stream, startDate, endDate, offset, valueSupplier);
 
     return stream;
 };

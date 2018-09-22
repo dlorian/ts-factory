@@ -3,6 +3,8 @@ const dateUtils = require('../utils/date-util');
 const factory2325 = require('./ts-factory-2325');
 const factory2424 = require('./ts-factory-2424');
 
+const { randomValueSupplier, defaultValueSupplier } = require('../utils/value-util');
+
 const GRANUlARITY = {
     QUARTER_HOURLY: { minutes: 15 },
     HOURLY: { hours: 1 },
@@ -24,6 +26,7 @@ const stream = (start, end, options) => {
     options = options || {};
     const granulartiy = options.granulartiy || 'HOURLY';
     const dstMode = options.dstMode || '2424';
+    const values = options.values || [];
 
     let startDate = dateUtils.fromISO(start);
     startDate = dateUtils.toDayStart(startDate);
@@ -36,8 +39,10 @@ const stream = (start, end, options) => {
         throw new Error(`Granulartiy ${granulartiy} is not defined`);
     }
 
+    const valueSupplier = values.length == 0 ? randomValueSupplier() : defaultValueSupplier(values);
+
     return factories.get(dstMode)
-        .stream(startDate, endDate, offset)
+        .stream(startDate, endDate, offset, valueSupplier)
         .on('error', (err) => log.error('error while ts-factory stream', err));
 };
 
