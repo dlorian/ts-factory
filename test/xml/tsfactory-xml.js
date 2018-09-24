@@ -5,8 +5,8 @@ describe('xml', () => {
     describe('DST "2424"', () => {
         it('should return valid hourly time series', done => {
             const options = {
-                start: '2019-01-01',
-                end: '2020-01-01',
+                start: '2018-05-01',
+                end: '2019-05-01',
                 format: 'xml',
                 granularity: 'hourly',
                 values: [1]

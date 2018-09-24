@@ -1,8 +1,8 @@
 const { Transform } = require('stream');
-const { toDate, toTime } = require('../utils/date-util');
+const { toFormat } = require('../utils/date-util');
 
 const _transform = data => {
-    return `${toDate(data.tsDate)};${toTime(data.tsDate)};${data.tsValue}\n`;
+    return `${toFormat(data.tsDate, 'dd.MM.yyyy')};${toFormat(data.tsDate, 'HH:mm' )};${data.tsValue}\n`;
 };
 
 const stream = () => {
