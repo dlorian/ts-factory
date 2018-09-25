@@ -8,4 +8,4 @@ addons:
   sonarcloud:
     organization: "dlorian-github"
 script:
-  - sonnar-scanner
+  - sonar-scanner
