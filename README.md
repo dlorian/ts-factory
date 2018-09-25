@@ -1,5 +1,7 @@
 # ts-factory
 
+https://sonarcloud.io/api/project_badges/measure?project=dlorian_ts-factory&metric=alert_status
+
 *ts-factory* is just a simple factory used to create some kind of times series mock data.
 
 # Install
