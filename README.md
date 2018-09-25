@@ -1,7 +1,6 @@
 # ts-factory
 
-![Travis (.org)](https://img.shields.io/travis/:dlorian/:ts-factory.svg)
-
+[![Build Status](https://travis-ci.org/dlorian/ts-factory.svg?branch=master)](https://travis-ci.org/dlorian/ts-factory) 
 ![SonarCloud (.io)](https://sonarcloud.io/api/project_badges/measure?project=dlorian_ts-factory&metric=alert_status)
 
 *ts-factory* is just a simple factory used to create some kind of times series mock data.
