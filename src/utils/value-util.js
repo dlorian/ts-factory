@@ -8,7 +8,7 @@ class DefaultValueSupplier {
     }
 
     getValue() {
-        return this.values[this.idx++ % this.values.length];        
+        return this.values[this.idx++ % this.values.length];
     }
 }
 
@@ -19,6 +19,6 @@ class RandomValueSupplier {
 }
 
 module.exports = {
-    randomValueSupplier: () => new RandomValueSupplier(),
-    defaultValueSupplier: (values) =>  new DefaultValueSupplier(values)
+    createRandomValueSupplier: () => new RandomValueSupplier(),
+    createDefaultValueSupplier: values => new DefaultValueSupplier(values)
 };
