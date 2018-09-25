@@ -8,4 +8,5 @@ addons:
   sonarcloud:
     organization: "dlorian-github"
 script:
+  - npm test
   - sonar-scanner
