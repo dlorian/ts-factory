@@ -13,7 +13,7 @@ const create = (stream, startDate, endDate, offset, valueSupplier) => {
 const stream = (startDate, endDate, offset, valueSupplier) => {
     const stream = new Readable({
         objectMode: true,
-        read() { }
+        read() {}
     });
 
     create(stream, startDate, endDate, offset, valueSupplier);

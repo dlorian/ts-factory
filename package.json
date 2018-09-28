@@ -9,7 +9,7 @@
     "node": ">=10.1.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha -t 20000"
+    "test": "./node_modules/.bin/mocha"
   },
   "dependencies": {
     "luxon": "^1.3.3",

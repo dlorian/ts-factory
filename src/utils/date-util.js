@@ -1,7 +1,7 @@
-const { DateTime } = require('luxon');
+const { DateTime, Settings } = require('luxon');
 
-DateTime.local().setZone('local');
-DateTime.local().reconfigure({ locale: 'de' });
+// Necessary to set the default time zone. Otherwise adding duration will lead to DST problems.
+Settings.defaultZoneName = 'Europe/Berlin';
 
 const fromISO = dateString => {
     const date = DateTime.fromISO(dateString, { locale: 'de' });
@@ -13,7 +13,9 @@ const fromISO = dateString => {
 };
 
 const getDate = (year, month, day, hour, minute, second) => {
-    return DateTime.local(year, month, day, hour, minute, second);
+    return DateTime.local(year, month, day, hour, minute, second).setLocale(
+        'de-DE'
+    );
 };
 
 const toDayStart = date => {
