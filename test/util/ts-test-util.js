@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 const { expect } = require('chai');
-const streamEqual = require('stream-equal');
 
 const buildErrorMessage = (outputFile, sampleFile) => {
     return `"${outputFile}" does not match the expected time series in "${sampleFile}"`;
@@ -14,6 +13,15 @@ const createWriteStream = outputFile => {
     return fs.createWriteStream(outputFile, { encoding: 'utf8' });
 };
 
+const totringWithoutWhitespaces = buffer => {
+    return buffer.toString().replace(/\s/g, '');
+};
+
+const readFileAsString = filePath => {
+    const fileBuffer = fs.readFileSync(filePath, 'utf-8');
+    return totringWithoutWhitespaces(fileBuffer);
+};
+
 const compareFiles = (testDir, outputFile, sampleFile, done) => {
     const outputFilePath = resolveFilePath(testDir, outputFile);
     const sampleFilePath = resolveFilePath(testDir, sampleFile);
@@ -21,13 +29,13 @@ const compareFiles = (testDir, outputFile, sampleFile, done) => {
     const exists = fs.existsSync(outputFilePath);
     expect(exists, `${outputFile} does not exists as expected`).to.be.true;
 
-    const readStream1 = fs.createReadStream(outputFilePath);
-    const readStream2 = fs.createReadStream(sampleFilePath);
+    const outputString = readFileAsString(outputFilePath);
+    const sampleString = readFileAsString(sampleFilePath);
 
-    streamEqual(readStream1, readStream2, (err, result) => {
-        expect(result, buildErrorMessage(outputFile, sampleFile)).to.be.true;
-        done();
-    });
+    expect(outputString, buildErrorMessage(outputFile, sampleFile)).to.be.equal(
+        sampleString
+    );
+    done();
 };
 
 const assertTsStream = (tsStream, testDir, outputFile, sampleFile, done) => {

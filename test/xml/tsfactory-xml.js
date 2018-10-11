@@ -5,7 +5,7 @@ describe('xml', () => {
     it('should return valid hourly time series', done => {
         const options = {
             start: '2018-05-01',
-            end: '2019-05-01',
+            end: '2018-05-02',
             format: 'xml',
             granularity: 'hourly',
             values: [1]

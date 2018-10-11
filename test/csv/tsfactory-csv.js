@@ -5,7 +5,7 @@ describe('csv', () => {
     it('should return valid hourly time series', done => {
         const options = {
             start: '2019-01-01',
-            end: '2020-01-01',
+            end: '2019-01-02',
             format: 'csv',
             granularity: 'hourly',
             values: [1]
@@ -19,5 +19,5 @@ describe('csv', () => {
             'ts-sample-csv.txt',
             done
         );
-    }).timeout(0);
+    });
 });
