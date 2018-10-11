@@ -1,5 +1,6 @@
 const tsFactory = require('./factory');
 const formatTransformer = require('./format-transformer');
+const log = require('./logger');
 
 const stream = options => {
     const start = options.start;
@@ -7,6 +8,9 @@ const stream = options => {
     const format = options.format || 'json';
     const granulartiy = options.granulartiy || 'hourly';
     const values = options.values || [];
+    const debug = options.debug || false;
+
+    log.init(debug);
 
     const tsStream = tsFactory.stream(start, end, {
         granulartiy,

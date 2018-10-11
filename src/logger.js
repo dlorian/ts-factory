@@ -1,14 +1,27 @@
+/*eslint-disable */
+const log = console.log;
+/*eslint-enable */
 
-const debug = (message) => {
-    console.debug(message);
+const chalk = require('chalk');
+
+const infoStyle = chalk.bold.white;
+const debugStyle = chalk.bold.yellow;
+const errorStyle = chalk.bold.red;
+
+let loggerActive = false;
+
+const init = (active = false) => (loggerActive = active);
+
+const info = (message, ...args) => {
+    if (loggerActive) log(infoStyle(message, args));
 };
 
-const info = (message, object) => {
-    console.info(message.replace('{}', object ? JSON.stringify(object) : ''));
+const debug = (message, ...args) => {
+    if (loggerActive) log(debugStyle(message, args));
 };
 
 const error = (message, err) => {
-    console.error(message, err);
+    if (loggerActive) log(errorStyle(message, err));
 };
 
-module.exports = { debug, info, error };
+module.exports = { debug, info, error, init };
