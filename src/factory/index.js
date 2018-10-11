@@ -44,7 +44,7 @@ const stream = (start, end, options) => {
     let endDate = dateUtils.fromISO(end);
     endDate = dateUtils.toDayStart(endDate);
 
-    const offset = GRANUlARITY[granulartiy];
+    const offset = GRANUlARITY[granulartiy.toUpperCase()];
     isDefined(offset, `no offset defined for granulartiy ${granulartiy}`);
 
     const valueSupplier = determineValueSupplier(values);
