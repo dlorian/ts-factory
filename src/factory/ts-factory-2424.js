@@ -3,7 +3,7 @@ const { Readable } = require('stream');
 const create = (stream, startDate, endDate, offset, valueSupplier) => {
     let currentDate = startDate;
     do {
-        stream.push({ tsDate: currentDate, tsValue: valueSupplier.getValue() });
+        stream.push({ tsDate: currentDate, tsValue: valueSupplier.getValue(), tsThirdQty: 0 });
         currentDate = currentDate.plus(offset);
     } while (currentDate < endDate);
 

@@ -4,7 +4,8 @@ const { toDateTime } = require('../utils/date-util');
 const _transform = (data, firstChunk) => {
     return `${firstChunk ? '' : ','}{
     "date": "${toDateTime(data.tsDate)}",
-    "value": ${data.tsValue}
+    "value": ${data.tsValue},
+    "thirdQty": ${data.tsThirdQty},
 }`;
 };
 

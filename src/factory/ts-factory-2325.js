@@ -39,7 +39,7 @@ const create = (stream, startDate, endDate, offset, valueSupplier) => {
             }
         }
 
-        stream.push({ tsDate: currentDate, tsValue: valueSupplier.getValue() });
+        stream.push({ tsDate: currentDate, tsValue: valueSupplier.getValue(), tsThirdQty: 0 });
 
         currentDate = currentDate.plus(offset);
     } while (currentDate < endDate);

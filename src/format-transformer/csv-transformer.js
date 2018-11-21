@@ -2,7 +2,7 @@ const { Transform } = require('stream');
 const { toFormat } = require('../utils/date-util');
 
 const _transform = data => {
-    return `${toFormat(data.tsDate, 'dd.MM.yyyy')};${toFormat(data.tsDate, 'HH:mm' )};${data.tsValue}\n`;
+    return `${toFormat(data.tsDate, 'dd.MM.yyyy')};${toFormat(data.tsDate, 'HH:mm' )};${data.tsValue};${data.tsThirdQty}\n`;
 };
 
 const stream = () => {
