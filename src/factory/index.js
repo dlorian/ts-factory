@@ -3,7 +3,7 @@ const factory2325 = require('./ts-factory-2325');
 const factory2424 = require('./ts-factory-2424');
 
 const dateUtils = require('../utils/date-util');
-const valueUtil = require('../utils/value-util');
+const valueSupplier = require('../utils/value-supplier');
 const { isDefined } = require('../utils/assert-util');
 
 const GRANUlARITY = {
@@ -25,8 +25,8 @@ const factories = {
 
 const determineValueSupplier = values => {
     return values.length == 0
-        ? valueUtil.createRandomValueSupplier()
-        : valueUtil.createDefaultValueSupplier(values);
+        ? valueSupplier.createRandomValueSupplier()
+        : valueSupplier.createDefaultValueSupplier(values);
 };
 
 const stream = (start, end, options) => {
