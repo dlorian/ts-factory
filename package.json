@@ -1,6 +1,6 @@
 {
   "name": "@dlorian/ts-factory",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple time series factory for time series mock data creation",
   "main": "src/index.js",
   "author": "dlorian",
