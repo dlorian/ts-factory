@@ -7,19 +7,14 @@ const _transform = data => {
 };
 
 const stream = () => {
-    let firstChunk = true;
     const stream = new Transform({
         objectMode: true,
 
         transform: (data, encoding, done) => {
-            const result = _transform(data, firstChunk);
-            firstChunk = false;
-            done(null, result);
+            done(null, _transform(data));
         },
 
-        final: done => {
-            done(null);
-        }
+        final: done => done(null)
     });
 
     return stream;

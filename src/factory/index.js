@@ -29,11 +29,11 @@ const determineValueSupplier = values => {
         : valueSupplier.createDefaultValueSupplier(values);
 };
 
-const stream = (start, end, options) => {
+const stream = (start, end, factoryOptions) => {
     isDefined(start, 'start date must not be defined');
     isDefined(end, 'end date must not be defined');
 
-    options = options || {};
+    const options = factoryOptions || {};
     const granulartiy = options.granulartiy || 'HOURLY';
     const dstMode = options.dstMode || '2424';
     const values = options.values || [];
@@ -47,10 +47,9 @@ const stream = (start, end, options) => {
     const offset = GRANUlARITY[granulartiy.toUpperCase()];
     isDefined(offset, `no offset defined for granulartiy ${granulartiy}`);
 
-    const valueSupplier = determineValueSupplier(values);
     return factories
         .get(dstMode)
-        .stream(startDate, endDate, offset, valueSupplier)
+        .stream(startDate, endDate, offset, determineValueSupplier(values))
         .on('error', err => log.error('error while ts-factory stream', err));
 };
 
