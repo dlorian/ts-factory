@@ -14,7 +14,7 @@ class DefaultValueSupplier {
 
 class RandomValueSupplier {
     getValue() {
-        return roundTo(randomFloat(10, 100), 3);
+        return roundTo(randomFloat(1, 5), 3);
     }
 }
 
