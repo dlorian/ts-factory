@@ -5,7 +5,7 @@ const _transform = (data, firstChunk) => {
     return `${firstChunk ? '' : ','}{
     "date": "${toDateTime(data.tsDate)}",
     "value": ${data.tsValue},
-    "thirdQty": ${data.tsThirdQty},
+    "thirdQty": ${data.tsThirdQty}
 }`;
 };
 
